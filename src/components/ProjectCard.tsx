@@ -22,7 +22,8 @@ export default function ProjectCard({ project, index = 0 }: { project: CaseStudy
               accent={project.coverAccent}
               src={project.coverSrc}
               alt={`${project.title} — ${project.subtitle}`}
-              aspect="aspect-[4/3]"
+              aspect="aspect-[16/9]"
+              fit="contain"
             />
           </motion.div>
         </div>

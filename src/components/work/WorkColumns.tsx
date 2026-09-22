@@ -132,6 +132,7 @@ export default function WorkColumns({ projects }: { projects: CaseStudy[] }) {
                 src={project.coverSrc}
                 alt={project.title}
                 aspect=""
+                fit="contain"
                 parallax={false}
                 className="absolute inset-0 h-full w-full rounded-2xl"
               />

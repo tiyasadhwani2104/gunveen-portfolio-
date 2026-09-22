@@ -6,7 +6,7 @@ export default function Marquee({ items }: { items: string[] }) {
         {loop.map((item, i) => (
           <span
             key={i}
-            className="font-display text-2xl md:text-3xl font-medium tracking-tight text-foreground/25 whitespace-nowrap"
+            className="font-display text-2xl md:text-3xl font-medium tracking-tight text-foreground/60 whitespace-nowrap"
           >
             {item} <span className="text-accent/50">◆</span>
           </span>

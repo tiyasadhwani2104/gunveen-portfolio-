@@ -118,6 +118,7 @@ export const caseStudies: CaseStudy[] = [
     category: "Service Design · Research",
     year: "2025",
     coverAccent: "from-[#FFF8CA] via-[#F3E2A0] to-[#CDE3E8]",
+    coverSrc: "/images/healthcare-01-cover.webp",
     summary:
       "A six-month solo research project into why Indians hesitate to trust digital healthcare. Triangulating ~60 sources, a 30-response survey, four in-depth interviews and a self-ethnography, it found the barrier isn't access — it's verification.",
     meta: [
@@ -565,7 +566,7 @@ export const caseStudies: CaseStudy[] = [
     category: "Business Design · Live Client",
     year: "2025",
     coverAccent: "from-[#CDE3E8] via-[#E4EFF0] to-[#FFF8CA]",
-    coverSrc: "/images/hiring-01-hero.webp",
+    coverSrc: "/images/hiring-05-dashboard.webp",
     summary:
       "A six-month live business design project for a Mumbai event company. The founder had clear expectations of ownership, speed and client-first, but nobody had turned them into something a hiring process could test. I designed a scenario-based assessment that shows how candidates think and decide before they're hired.",
     meta: [

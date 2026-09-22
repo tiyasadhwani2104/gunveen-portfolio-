@@ -79,7 +79,7 @@ export default function Showreel({
     <div className="group relative overflow-hidden rounded-2xl">
       <video
         ref={videoRef}
-        className="aspect-video w-full object-cover"
+        className="aspect-video w-full cursor-pointer object-cover"
         src={src}
         poster={poster}
         muted={muted}
@@ -89,7 +89,23 @@ export default function Showreel({
         onPlay={() => setPlaying(true)}
         onPause={() => setPlaying(false)}
         onError={() => setUnavailable(true)}
+        onClick={toggleSound}
+        data-cursor="link"
+        data-cursor-label={muted ? "Tap for sound" : "Mute"}
       />
+
+      {/* Browsers force autoplay to start muted — this hint stays up until the
+          visitor unmutes, since a small corner icon alone was easy to miss. */}
+      {muted ? (
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 flex items-center justify-center"
+        >
+          <span className="flex items-center gap-2 rounded-full bg-background/85 px-4 py-2 text-sm font-medium text-foreground backdrop-blur animate-pulse">
+            <VolumeX size={15} /> Tap for sound
+          </span>
+        </div>
+      ) : null}
 
       <div className="pointer-events-none absolute inset-x-0 bottom-0 flex justify-end gap-2 bg-gradient-to-t from-black/45 to-transparent p-4">
         <button
