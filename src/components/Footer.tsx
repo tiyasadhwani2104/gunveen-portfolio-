@@ -22,6 +22,12 @@ export default function Footer() {
               {siteConfig.email}
               <ArrowUpRight size={18} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </a>
+            <a
+              href={`tel:${siteConfig.phone.replace(/\s+/g, "")}`}
+              className="mt-2 block text-sm text-muted hover:text-accent"
+            >
+              {siteConfig.phone}
+            </a>
           </div>
 
           <div>
@@ -38,8 +44,6 @@ export default function Footer() {
             <p className="text-xs font-semibold uppercase tracking-wide text-muted">Elsewhere</p>
             <ul className="mt-4 space-y-2 text-sm">
               <li><a href={siteConfig.social.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-accent">LinkedIn</a></li>
-              <li><a href={siteConfig.social.behance} target="_blank" rel="noopener noreferrer" className="hover:text-accent">Behance</a></li>
-              <li><a href={siteConfig.social.instagram} target="_blank" rel="noopener noreferrer" className="hover:text-accent">Instagram</a></li>
             </ul>
           </div>
         </div>

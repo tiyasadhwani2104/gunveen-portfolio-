@@ -24,7 +24,8 @@ export const siteConfig = {
     closing: "I ask questions, connect the dots, and turn complexity into clarity.",
   },
   location: "Mumbai, India",
-  email: "gunveen@example.com",
+  email: "gunveenkaurbedi24@gmail.com",
+  phone: "+91 82606 65017",
   resumeUrl: "/resume.pdf",
   availability: "Open to internships & graduate roles",
   availabilityDetail:
@@ -34,13 +35,10 @@ export const siteConfig = {
     program: "Strategic Design Management",
     minor: "Digital Ecosystem",
     institution: "ISDI, ATLAS SkillTech University",
-    graduation: "2026",
+    graduation: "2027",
   },
   social: {
-    linkedin: "https://linkedin.com/in/your-handle",
-    behance: "https://behance.net/your-handle",
-    instagram: "https://instagram.com/your-handle",
-    github: "https://github.com/your-handle",
+    linkedin: "https://linkedin.com/in/gunveenkaurbedi",
   },
 } as const;
 
@@ -70,6 +68,14 @@ export type CaseStudyBlock =
       intro?: string;
       columns: [string, string];
       rows: [string, string][];
+    }
+  | {
+      /** An original bar-chart graphic, built in the site's own style —
+       * used instead of reproducing a third party's published infographic. */
+      kind: "chart";
+      heading?: string;
+      intro?: string;
+      items: { label: string; display: string; percent: number; source?: string }[];
     }
   | {
       kind: "image";
@@ -175,10 +181,14 @@ export const caseStudies: CaseStudy[] = [
         ],
       },
       {
-        kind: "image",
-        label: "Wide crop of the full Figma research board",
-        caption: "~60 sources across 6 types.",
-        wide: true,
+        kind: "chart",
+        heading: "What the data actually shows",
+        intro: "The same three figures from above, sized against each other.",
+        items: [
+          { label: "Digital health market growth", display: "20–25%/yr", percent: 23, source: "IMARC; Grand View Research" },
+          { label: "US physicians unsatisfied with EHRs", display: "50%+", percent: 52, source: "Stanford Medicine × Harris Poll, 2018" },
+          { label: "Digital Health ID initial uptake", display: "78%", percent: 78, source: "Field study cited in the paper" },
+        ],
       },
       {
         kind: "steps",
@@ -637,6 +647,14 @@ export const caseStudies: CaseStudy[] = [
         ],
       },
       {
+        kind: "image",
+        src: "/images/hiring-05-dashboard.webp",
+        fit: "contain",
+        label: "The candidate decision-support dashboard, built in Figma",
+        caption: "Pipeline by stage, role-fit scores, and a top-3 comparison view.",
+        wide: true,
+      },
+      {
         kind: "steps",
         heading: "Design logic",
         items: [
@@ -779,6 +797,11 @@ export const beyondTheBrief = {
       body: "I've modelled for a college fashion show, and I enjoy the runway and the camera. It taught me how much a look depends on confidence, teamwork and timing.",
       photoLabel: "Fashion show / shoots",
       photoCount: 3,
+      photoSrcs: [
+        "/images/modelling-01.webp",
+        "/images/modelling-02.webp",
+        "/images/modelling-03.webp",
+      ],
     },
     {
       id: "mun",
@@ -786,6 +809,7 @@ export const beyondTheBrief = {
       body: "I've done Model UN since 2019, and it's where I learned to think in structure and speak under pressure. I've chaired several conferences, served as Deputy Secretary General of VISMUN, taken part in Harvard MUN, and led MUNzil, our college's large-scale MUN, as Secretary General. I've also chaired an economics table at Atlas Inc. and placed second at a state-level debate competition.",
       photoLabel: "Chairing / MUNzil",
       photoCount: 1,
+      photoSrcs: ["/images/mun-munzil.webp"],
     },
     {
       id: "cooking",
@@ -793,6 +817,7 @@ export const beyondTheBrief = {
       body: "I love cooking food from different cuisines and exploring new places to eat. It's how I learn how other people eat, celebrate and live.",
       photoLabel: "A dish I made / a favourite spot",
       photoCount: 2,
+      photoSrcs: ["/images/food-01.webp", "/images/food-02.webp"],
     },
     {
       id: "reading",
@@ -875,7 +900,7 @@ export const skills = {
 
 export const experience = [
   {
-    period: "2022 — 2026",
+    period: "2023 — 2027",
     title: "B.Des, Strategic Design Management",
     place: "ISDI, ATLAS SkillTech University",
     description:
@@ -903,8 +928,8 @@ export const experience = [
       "Managed four critical verticals across the planning and execution of one of the state's most impactful CSR-driven initiatives.",
   },
   {
-    period: "May — Jul 2024",
-    title: "Marketing Intern",
+    period: "May — Jul 2023",
+    title: "Events & Marketing Intern",
     place: "G N Autonation LLP (Mahindra)",
     description:
       "Took on new assignments across marketing, recognised by the HR manager for responsibility, sincerity and willingness to learn.",

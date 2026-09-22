@@ -35,6 +35,17 @@ export default function ContactPage() {
             <ArrowUpRight size={28} className="shrink-0 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
           </a>
 
+          <a
+            href={`tel:${siteConfig.phone.replace(/\s+/g, "")}`}
+            className="group flex items-center justify-between gap-4 border-t border-line py-8 transition-colors hover:text-accent"
+          >
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-wide text-muted">Phone</p>
+              <p className="font-display mt-2 text-2xl font-semibold sm:text-3xl">{siteConfig.phone}</p>
+            </div>
+            <ArrowUpRight size={28} className="shrink-0 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+          </a>
+
           <div className="border-t border-line py-8">
             <p className="text-xs font-semibold uppercase tracking-wide text-muted">Based in</p>
             <p className="font-display mt-2 text-2xl font-semibold sm:text-3xl">{siteConfig.location}</p>
@@ -45,9 +56,6 @@ export default function ContactPage() {
             <div className="mt-4 flex flex-wrap gap-3">
               {[
                 { label: "LinkedIn", href: siteConfig.social.linkedin },
-                { label: "Behance", href: siteConfig.social.behance },
-                { label: "Instagram", href: siteConfig.social.instagram },
-                { label: "GitHub", href: siteConfig.social.github },
               ].map((social) => (
                 <a
                   key={social.label}

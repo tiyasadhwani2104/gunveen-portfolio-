@@ -15,10 +15,14 @@ const LAYOUTS: Record<number, ClusterSlot[]> = {
     { className: "col-span-2 sm:col-span-1", aspect: "aspect-[3/4]" },
     { className: "col-span-2 sm:col-span-1 sm:mt-10", aspect: "aspect-[4/5]" },
   ],
+  // Portrait, not landscape — these are phone photos shot vertically, and a
+  // wide 16:9 slot was cropping them down to an unrecognisable sliver. Three
+  // across on larger screens (see the grid-cols override below) so nothing
+  // has to fight a mismatched frame.
   3: [
-    { className: "col-span-2", aspect: "aspect-[16/9]" },
-    { className: "col-span-1", aspect: "aspect-square" },
-    { className: "col-span-1 sm:mt-8", aspect: "aspect-square" },
+    { className: "col-span-1", aspect: "aspect-[3/4]" },
+    { className: "col-span-1 sm:mt-8", aspect: "aspect-[3/4]" },
+    { className: "col-span-2 sm:col-span-1 sm:mt-3", aspect: "aspect-[3/4]" },
   ],
 };
 
@@ -38,13 +42,22 @@ type PhotoClusterProps = {
   count: number;
   accent?: string;
   className?: string;
+  /** Real photo paths, in slot order. Missing entries stay placeholders. */
+  srcs?: string[];
 };
 
-export default function PhotoCluster({ label, count, accent, className }: PhotoClusterProps) {
+export default function PhotoCluster({ label, count, accent, className, srcs }: PhotoClusterProps) {
   const slots = slotsFor(count);
 
   return (
-    <div className={cn("grid grid-cols-2 gap-4", className)}>
+    <div
+      className={cn(
+        "grid grid-cols-2 gap-4",
+        // Three portrait photos read best three-across, not wrapped 2+1.
+        count === 3 && "sm:grid-cols-3",
+        className
+      )}
+    >
       {slots.map((slot, i) => (
         <PhotoSlot
           key={`${label}-${i}`}
@@ -52,6 +65,7 @@ export default function PhotoCluster({ label, count, accent, className }: PhotoC
           accent={accent}
           aspect={slot.aspect}
           className={slot.className}
+          src={srcs?.[i]}
         />
       ))}
     </div>

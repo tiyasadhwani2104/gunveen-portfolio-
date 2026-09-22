@@ -32,16 +32,49 @@ const { title, subtitle, intro, items, munFacts, shelf } = beyondTheBrief;
  * Server component; the animated pieces below are client components.
  */
 export default function BeyondSection() {
-  const blocks = items.map((item) => (
-    <article key={item.id} className={SPANS[item.id] ?? "md:col-span-6"}>
-      <PhotoCluster label={item.photoLabel} count={item.photoCount} accent={ACCENTS[item.id]} />
-      <h3 className="font-display mt-6 text-xl font-semibold tracking-tight sm:text-2xl">
-        {item.title}
-      </h3>
-      <p className="mt-2 max-w-prose text-sm text-muted leading-relaxed">{item.body}</p>
-      {item.id === "reading" && <Shelf reading={shelf.reading} readingNow={shelf.readingNow} />}
-    </article>
-  ));
+  const blocks = items.map((item) => {
+    const photo = (
+      <PhotoCluster
+        label={item.photoLabel}
+        count={item.photoCount}
+        accent={ACCENTS[item.id]}
+        srcs={"photoSrcs" in item ? [...item.photoSrcs] : undefined}
+        className={item.id === "reading" ? "h-full" : undefined}
+      />
+    );
+
+    const copy = (
+      <>
+        <h3 className="font-display text-xl font-semibold tracking-tight sm:text-2xl">
+          {item.title}
+        </h3>
+        <p className="mt-2 max-w-prose text-sm text-muted leading-relaxed">{item.body}</p>
+        {item.id === "reading" && <Shelf reading={shelf.reading} readingNow={shelf.readingNow} />}
+      </>
+    );
+
+    // The reading block gets its own "book nook" composition — photo and
+    // shelf side by side, rather than the stacked photo-then-text pattern
+    // every other block uses. It's the one block with a second visual
+    // element (the shelf), so it earns a distinct layout.
+    if (item.id === "reading") {
+      return (
+        <article key={item.id} className={SPANS[item.id] ?? "md:col-span-6"}>
+          <div className="grid gap-6 sm:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] sm:items-stretch">
+            <div className="sm:h-full [&>div]:h-full [&>div>*]:h-full">{photo}</div>
+            <div className="flex flex-col justify-center">{copy}</div>
+          </div>
+        </article>
+      );
+    }
+
+    return (
+      <article key={item.id} className={SPANS[item.id] ?? "md:col-span-6"}>
+        {photo}
+        <div className="mt-6">{copy}</div>
+      </article>
+    );
+  });
 
   // The facts strip belongs to the MUN block, so it spans the full row
   // immediately after it.

@@ -22,6 +22,8 @@ type PhotoSlotProps = {
   /** Tailwind aspect utility, e.g. "aspect-[4/5]". */
   aspect?: string;
   className?: string;
+  /** Real photo path — renders instead of the placeholder when set. */
+  src?: string;
 };
 
 /**
@@ -37,7 +39,7 @@ type PhotoSlotProps = {
  * and keep the wrapper (it carries the aspect ratio, the hover lift and the
  * `data-cursor` hook).
  */
-export default function PhotoSlot({ label, accent, aspect, className }: PhotoSlotProps) {
+export default function PhotoSlot({ label, accent, aspect, className, src }: PhotoSlotProps) {
   // Parallax is decorative: drop it for visitors who asked for reduced motion.
   // Resolved after hydration, so server and first client render agree.
   const reduced = useSyncExternalStore(
@@ -59,6 +61,8 @@ export default function PhotoSlot({ label, accent, aspect, className }: PhotoSlo
         label={label}
         accent={accent}
         aspect={aspect}
+        src={src}
+        alt={src ? label : undefined}
         parallax={!reduced}
         className="h-full w-full"
       />

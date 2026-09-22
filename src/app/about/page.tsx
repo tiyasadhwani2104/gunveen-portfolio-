@@ -66,16 +66,13 @@ export default function AboutPage() {
             </SplitHeading>
             <Reveal delay={0.2}>
               <p className="mt-5 text-lg text-muted leading-relaxed">
-                Strategic Design Management student with experience in client-facing projects, brand strategy,
-                and cross-functional collaboration. Skilled in stakeholder communication, market research,
-                project coordination, and delivering strategic solutions. Seeking opportunities in client
-                servicing and account management where I can bridge client needs with creative execution.
-              </p>
-              <p className="mt-4 text-muted leading-relaxed">
-                Recently contributed as a Project Manager intern at Maha CSR, where end-to-end event execution
-                enabled impactful Corporate Social Responsibility initiatives. This role strengthened my skills
-                in project management, stakeholder coordination, and strategic planning. I&apos;m aiming to
-                create innovative solutions at the intersection of design and social impact.
+                Strategic Design Management student turning ambiguous problems into frameworks and tools
+                people actually use through research, systems thinking and brand strategy. I&apos;ve led
+                cross-functional coordination as Team Lead for the Government of Maharashtra&apos;s CSR
+                Summit, supported the Mahindra XUV300 launch as an Events &amp; Marketing intern, and run
+                brand strategy and market research at Adbhoot Creatives. I also love organising events —
+                I&apos;ve chaired and run Model UN conferences like MUNzil, coordinating 300+ delegates and
+                16 judges.
               </p>
               <div className="mt-8 flex flex-wrap gap-4">
                 <a
@@ -127,8 +124,8 @@ export default function AboutPage() {
                 n: "02",
                 title: "Design the backstage",
                 body: "A great customer experience that isn't operationally viable isn't a solution — it's a wish. I design frontstage and backstage together.",
-                // Facilitation photo pending — send it and it'll get the same treatment.
-                bgImage: undefined,
+                // Your own facilitation photo, running the workshop that builds the backstage.
+                bgImage: "/images/design-backstage.webp",
               },
               {
                 n: "03",
@@ -141,17 +138,18 @@ export default function AboutPage() {
               <div key={item.n} className="relative overflow-hidden rounded-2xl border border-line p-8">
                 {item.bgImage ? (
                   <>
-                    {/* Faded to atmosphere behind the text, tinted dark so the
-                        light text on top stays fully readable regardless of
-                        what's busy in the photo. */}
+                    {/* Visible behind the text, tinted so the light text on
+                        top stays readable regardless of what's busy in the
+                        photo — heavier tint toward the bottom, where the body
+                        copy sits, lighter toward the top corner. */}
                     <Image
                       src={item.bgImage}
                       alt=""
                       fill
                       sizes="(max-width: 640px) 100vw, 33vw"
-                      className="object-cover opacity-20"
+                      className="object-cover opacity-45"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-br from-background/90 via-background/85 to-background/95" />
+                    <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/82 to-background/92" />
                   </>
                 ) : null}
                 <div className="relative">

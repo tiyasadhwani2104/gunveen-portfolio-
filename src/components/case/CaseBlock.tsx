@@ -5,6 +5,7 @@ import ProseBlock from "./ProseBlock";
 import CalloutBlock from "./CalloutBlock";
 import QuoteBlock from "./QuoteBlock";
 import StatsBlock from "./StatsBlock";
+import ChartBlock from "./ChartBlock";
 import StepsBlock from "./StepsBlock";
 import ListBlock from "./ListBlock";
 import TableBlock from "./TableBlock";
@@ -21,6 +22,8 @@ export default function CaseBlock({ block }: { block: CaseStudyBlock }) {
       return <QuoteBlock text={block.text} attribution={block.attribution} />;
     case "stats":
       return <StatsBlock heading={block.heading} items={block.items} />;
+    case "chart":
+      return <ChartBlock heading={block.heading} intro={block.intro} items={block.items} />;
     case "steps":
       return (
         <StepsBlock
