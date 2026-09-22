@@ -1,0 +1,102 @@
+@import "tailwindcss";
+
+:root {
+  /* Palette: Lemon Chiffon / Rosewood / Coffee Bean / Botticelli */
+  --background: #6b0b0c;
+  --foreground: #fff8ca;
+  --muted: #e3c99a;
+  --accent: #cde3e8;
+  --secondary: #2d120d;
+  --line: #8c2c2a;
+  --card: #7a1113;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-secondary: var(--secondary);
+  --color-line: var(--line);
+  --color-card: var(--card);
+  --font-display: var(--font-space-grotesk);
+  --font-sans: var(--font-inter);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: auto;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--background);
+}
+
+.font-display {
+  font-family: var(--font-display), var(--font-sans), sans-serif;
+}
+
+/* thin custom scrollbar, matches editorial feel */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--line);
+  border-radius: 999px;
+  border: 2px solid var(--background);
+}
+
+/* Custom cursor: hide the native one only on fine-pointer devices. */
+@media (pointer: fine) {
+  body[data-custom-cursor="on"],
+  body[data-custom-cursor="on"] * {
+    cursor: none;
+  }
+}
+
+/* Opt back into the native cursor where precision matters. */
+body[data-custom-cursor="on"] input,
+body[data-custom-cursor="on"] textarea,
+body[data-custom-cursor="on"] select {
+  cursor: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body[data-custom-cursor="on"],
+  body[data-custom-cursor="on"] * {
+    cursor: auto;
+  }
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
