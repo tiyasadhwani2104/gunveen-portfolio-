@@ -12,15 +12,90 @@ import Showreel from "@/components/Showreel";
 import ScatterReveal from "@/components/ScatterReveal";
 import MagneticButton from "@/components/MagneticButton";
 import AmbientOrbs from "@/components/hero/AmbientOrbs";
+import DriftWall, { type DriftWallItem } from "@/components/hero/DriftWall";
 import TestimonialsSection from "@/components/testimonials/TestimonialsSection";
-import { siteConfig, caseStudies, skills } from "@/lib/data";
+import { useMotionCapability } from "@/lib/motion";
+import { siteConfig, caseStudies, skills, beyondTheBrief } from "@/lib/data";
 
 const heroWords = siteConfig.tagline.split(" ");
+
+// Case-study covers (linked back to the project) interleaved with real
+// personal photos from "Beyond the brief" — the wall doubles as a preview
+// of both halves of the site, not just decoration.
+const driftItems: DriftWallItem[] = [
+  ...caseStudies.map((c) => ({ image: c.coverSrc ?? "", title: c.title, href: `/work/${c.slug}` })),
+  ...beyondTheBrief.items.flatMap((item) =>
+    "photoSrcs" in item ? item.photoSrcs.map((src) => ({ image: src, title: item.title })) : []
+  ),
+].filter((item) => item.image);
+
+function MomentsWall() {
+  const capability = useMotionCapability();
+
+  if (capability !== "full") {
+    return (
+      <div className="grid grid-cols-3 gap-3 p-6 pt-28 sm:grid-cols-4">
+        {driftItems.slice(0, 8).map((item, i) => (
+          <div key={`${item.image}-${i}`} className="relative aspect-[3/2] overflow-hidden rounded-xl">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={item.image} alt={item.title ?? ""} className="h-full w-full object-cover" />
+          </div>
+        ))}
+      </div>
+    );
+  }
+
+  return (
+    <div className="h-screen">
+      <DriftWall
+        items={driftItems}
+        columns={5}
+        tileWidth={190}
+        tileHeight={126}
+        gap={16}
+        radius={18}
+        tilt={13}
+        turn={-11}
+        perspective={1300}
+        depth={100}
+        speed={28}
+        direction="up"
+        variance={0.4}
+        parallax={0.5}
+        lift={48}
+        fade={0.6}
+        dim={0.5}
+        grayscale
+        overlayColor="#2D120D"
+      />
+    </div>
+  );
+}
 
 export default function Home() {
   return (
     <>
       <NameIntro />
+
+      {/* ── OPENING WALL ───────────────────────────────────── */}
+      <section className="relative w-full overflow-hidden">
+        <MomentsWall />
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.2, duration: 0.6 }}
+          className="pointer-events-none absolute bottom-10 left-1/2 z-10 -translate-x-1/2"
+        >
+          <motion.div
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
+            className="flex flex-col items-center gap-1 text-muted"
+          >
+            <span className="text-xs uppercase tracking-widest">Scroll</span>
+            <ArrowDown size={14} />
+          </motion.div>
+        </motion.div>
+      </section>
 
       {/* ── HERO ───────────────────────────────────────────── */}
       <section className="relative flex min-h-screen flex-col justify-center overflow-hidden px-6 pt-24">
