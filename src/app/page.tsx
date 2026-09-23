@@ -33,12 +33,16 @@ function MomentsWall() {
   const capability = useMotionCapability();
 
   if (capability !== "full") {
+    // Touch / reduced-motion: an edge-to-edge static photo mosaic filling
+    // the screen, not a small padded grid — it needs to still read as an
+    // "opening" moment, not a stray thumbnail block before the hero.
     return (
-      <div className="grid grid-cols-3 gap-3 p-6 pt-28 sm:grid-cols-4">
-        {driftItems.slice(0, 8).map((item, i) => (
-          <div key={`${item.image}-${i}`} className="relative aspect-[3/2] overflow-hidden rounded-xl">
+      <div className="grid h-screen grid-cols-3 grid-rows-4 gap-0.5">
+        {driftItems.slice(0, 12).map((item, i) => (
+          <div key={`${item.image}-${i}`} className="relative overflow-hidden">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={item.image} alt={item.title ?? ""} className="h-full w-full object-cover" />
+            <div className="absolute inset-0 bg-[#2D120D]/40" />
           </div>
         ))}
       </div>
