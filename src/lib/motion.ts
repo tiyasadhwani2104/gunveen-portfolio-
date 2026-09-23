@@ -72,3 +72,18 @@ function readMotionCapability(): "full" | "static" {
 export function useMotionCapability(): "full" | "static" {
   return useSyncExternalStore(subscribeMotionCapability, readMotionCapability, () => "static");
 }
+
+function subscribeReducedMotion(onChange: () => void) {
+  const list = window.matchMedia("(prefers-reduced-motion: reduce)");
+  list.addEventListener("change", onChange);
+  return () => list.removeEventListener("change", onChange);
+}
+
+/**
+ * For motion that's cheap enough (a pure compositor transform, no canvas or
+ * per-frame layout work) to leave running on touch devices too — gates only
+ * on the visitor's actual reduced-motion preference, not on pointer type.
+ */
+export function useReducedMotionOnly(): boolean {
+  return useSyncExternalStore(subscribeReducedMotion, prefersReducedMotion, () => false);
+}

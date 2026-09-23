@@ -14,7 +14,7 @@ import MagneticButton from "@/components/MagneticButton";
 import AmbientOrbs from "@/components/hero/AmbientOrbs";
 import DriftWall, { type DriftWallItem } from "@/components/hero/DriftWall";
 import TestimonialsSection from "@/components/testimonials/TestimonialsSection";
-import { useMotionCapability } from "@/lib/motion";
+import { useReducedMotionOnly } from "@/lib/motion";
 import { siteConfig, caseStudies, skills, beyondTheBrief } from "@/lib/data";
 
 const heroWords = siteConfig.tagline.split(" ");
@@ -32,10 +32,14 @@ const driftItems: DriftWallItem[] = [
 ].filter((item) => item.image);
 
 function MomentsWall() {
-  const capability = useMotionCapability();
+  // The drift itself is a lightweight compositor-only transform (no canvas,
+  // no per-frame line drawing like the earlier rejected node-network
+  // background), so unlike the rest of this site's decorative motion it's
+  // left running on touch devices too — only reduced-motion turns it off.
+  const reduced = useReducedMotionOnly();
 
-  if (capability !== "full") {
-    // Touch / reduced-motion: an edge-to-edge static photo mosaic filling
+  if (reduced) {
+    // Reduced-motion: an edge-to-edge static photo mosaic filling
     // the screen, not a small padded grid — it needs to still read as an
     // "opening" moment, not a stray thumbnail block before the hero.
     return (
