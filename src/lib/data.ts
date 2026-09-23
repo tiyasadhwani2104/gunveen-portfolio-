@@ -18,7 +18,7 @@ export const siteConfig = {
     headline: "I'm a Strategic Designer who connects people, business, and ideas.",
     paragraphs: [
       "I use research, strategy, and design to unpack complex problems, uncover meaningful insights, and turn them into actionable opportunities.",
-      "My work spans consumer insights, business strategy, brand strategy, business design, and innovation — with a particular interest in understanding what people need and translating that into solutions that make sense for both people and businesses.",
+      "My work spans consumer insights, business strategy, brand strategy, business design, and innovation, with a particular interest in understanding what people need and translating that into solutions that make sense for both people and businesses.",
       "Currently pursuing a B.Des in Strategic Design Management, with a minor in Digital Ecosystem, I'm looking to build my career in strategy, consulting, business design, and brand/innovation environments.",
     ],
     closing: "I ask questions, connect the dots, and turn complexity into clarity.",
@@ -29,7 +29,7 @@ export const siteConfig = {
   resumeUrl: "/resume.pdf",
   availability: "Open to internships & graduate roles",
   availabilityDetail:
-    "Exploring strategy, consulting, business design, brand strategy and innovation roles — open to internships and graduate opportunities.",
+    "Exploring strategy, consulting, business design, brand strategy and innovation roles. Open to internships and graduate opportunities.",
   school: {
     degree: "B.Des",
     program: "Strategic Design Management",
@@ -120,7 +120,7 @@ export const caseStudies: CaseStudy[] = [
     coverAccent: "from-[#FFF8CA] via-[#F3E2A0] to-[#CDE3E8]",
     coverSrc: "/images/healthcare-01-cover.webp",
     summary:
-      "A six-month solo research project into why Indians hesitate to trust digital healthcare. Triangulating ~60 sources, a 30-response survey, four in-depth interviews and a self-ethnography, it found the barrier isn't access — it's verification.",
+      "A six-month solo research project into why Indians hesitate to trust digital healthcare. Triangulating ~60 sources, a 30-response survey, four in-depth interviews and a self-ethnography, it found the barrier isn't access: it's verification.",
     meta: [
       { label: "Role", value: "Solo research project" },
       { label: "Discipline", value: "Service Design" },
@@ -169,7 +169,7 @@ export const caseStudies: CaseStudy[] = [
           {
             value: "78%",
             label:
-              "initial Digital Health ID uptake in a localized study, tied to confidence in the government's data security — so it's fragile.",
+              "initial Digital Health ID uptake in a localized study, tied to confidence in the government's data security, so it's fragile.",
             source: "Field study cited in the paper",
           },
         ],
@@ -251,7 +251,7 @@ export const caseStudies: CaseStudy[] = [
     coverAccent: "from-[#F5EAB6] via-[#DCE9C4] to-[#CDE3E8]",
     coverSrc: "/images/refuge-01-hero.webp",
     summary:
-      "A six-month project that turned an invisible team problem — pressure building quietly until it ruptures — into a diagnosable framework (PAT), a tested workshop, and a semi-cooperative strategy game that makes managers feel what a framework could only describe.",
+      "A six-month project that turned an invisible team problem, pressure building quietly until it ruptures, into a diagnosable framework (PAT), a tested workshop, and a semi-cooperative strategy game that makes managers feel what a framework could only describe.",
     meta: [
       {
         label: "Role",
@@ -375,12 +375,12 @@ export const caseStudies: CaseStudy[] = [
       },
       { src: "/images/refuge-09-components.webp", fit: "contain",
         kind: "image",
-        label: "Game components — board, nation cards, event cards, rulebook",
+        label: "Game components: board, nation cards, event cards, rulebook",
         wide: true,
       },
       {
         kind: "stats",
-        heading: "Impact — from the workshop (n = 5)",
+        heading: "Impact from the workshop (n = 5)",
         items: [
           { value: "4.2 / 5", label: "overall rating, and 4 of 5 rated it 4 or 5" },
           { value: "4 of 5", label: "said the activities helped them think differently" },
@@ -535,7 +535,7 @@ export const caseStudies: CaseStudy[] = [
       },
       { src: "/images/rejewel-05-cost.webp", fit: "contain",
         kind: "image",
-        label: "Where the ₹72 goes — cost breakdown and the pen-plus-refill model",
+        label: "Where the ₹72 goes: cost breakdown and the pen-plus-refill model",
         wide: true,
       },
       {
@@ -603,7 +603,7 @@ export const caseStudies: CaseStudy[] = [
           },
           {
             title: "What the company told us",
-            body: "Talking to the company showed the founder had a clear set of expectations — ownership, speed and client-first — that hires weren't consistently meeting. Nobody had turned them into something a hiring process could test or a new joiner could learn.",
+            body: "Talking to the company showed the founder had a clear set of expectations (ownership, speed and client-first) that hires weren't consistently meeting. Nobody had turned them into something a hiring process could test or a new joiner could learn.",
           },
           {
             title: "Two insights",
@@ -629,7 +629,7 @@ export const caseStudies: CaseStudy[] = [
       },
       { src: "/images/hiring-02-reframe.webp", fit: "contain",
         kind: "image",
-        label: "The real problem wasn't tasks — reframe panel",
+        label: "The real problem wasn't tasks: reframe panel",
         caption: "Ownership, speed and client-first lived in one person's head.",
         wide: true,
       },
@@ -679,7 +679,7 @@ export const caseStudies: CaseStudy[] = [
       },
       { src: "/images/hiring-04-flows.webp", fit: "contain",
         kind: "image",
-        label: "How the assessment works — candidate and recruiter flows",
+        label: "How the assessment works: candidate and recruiter flows",
         wide: true,
       },
       {

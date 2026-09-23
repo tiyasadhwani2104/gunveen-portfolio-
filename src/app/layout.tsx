@@ -18,7 +18,7 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: `${siteConfig.name} — ${siteConfig.role}`,
+  title: `${siteConfig.name} · ${siteConfig.role}`,
   description: siteConfig.subTagline,
 };
 

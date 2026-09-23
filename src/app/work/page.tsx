@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
+import StaggerGroup from "@/components/type/StaggerGroup";
 import WorkColumns from "@/components/work/WorkColumns";
 import { caseStudies, siteConfig } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: `Work — ${siteConfig.name}`,
+  title: `Work · ${siteConfig.name}`,
   description: "Service design case studies and selected projects.",
 };
 
@@ -20,7 +21,7 @@ export default function WorkPage() {
           </h1>
           <p className="mt-5 max-w-xl text-muted">
             {caseStudies.length} selected projects spanning digital healthcare research, team
-            frameworks and game design, a product venture, and a live client brief — each one
+            frameworks and game design, a product venture, and a live client brief. Each one
             broken down from problem to what I&apos;d do differently.
           </p>
         </Reveal>
@@ -35,7 +36,7 @@ export default function WorkPage() {
           <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-accent">
             Index
           </p>
-          <ul className="mt-6">
+          <StaggerGroup as="ul" selector=":scope > li" stagger={0.06} y={20}>
             {caseStudies.map((project) => (
               <li key={project.slug}>
                 <Link
@@ -52,7 +53,7 @@ export default function WorkPage() {
                 </Link>
               </li>
             ))}
-          </ul>
+          </StaggerGroup>
         </div>
       </div>
     </section>

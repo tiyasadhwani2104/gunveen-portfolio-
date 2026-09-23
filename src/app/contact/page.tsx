@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import Reveal from "@/components/Reveal";
+import StaggerGroup from "@/components/type/StaggerGroup";
 import { ImageTrail } from "@/components/cursor";
 import { siteConfig } from "@/lib/data";
 import { ArrowUpRight } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: `Contact — ${siteConfig.name}`,
+  title: `Contact · ${siteConfig.name}`,
   description: `Get in touch with ${siteConfig.name}.`,
 };
 
@@ -23,7 +24,7 @@ export default function ContactPage() {
           </p>
         </Reveal>
 
-        <Reveal delay={0.15} className="mt-14">
+        <StaggerGroup className="mt-14" stagger={0.1} y={26}>
           <a
             href={`mailto:${siteConfig.email}`}
             className="group flex items-center justify-between gap-4 border-t border-line py-8 transition-colors hover:text-accent"
@@ -69,7 +70,7 @@ export default function ContactPage() {
               ))}
             </div>
           </div>
-        </Reveal>
+        </StaggerGroup>
       </div>
     </ImageTrail>
   );

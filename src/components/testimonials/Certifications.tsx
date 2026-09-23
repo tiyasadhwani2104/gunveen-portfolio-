@@ -15,13 +15,15 @@ export default function Certifications() {
 
       <StaggerGroup className="mt-6 grid gap-4 sm:grid-cols-2" stagger={0.08}>
         {certifications.map((cert) => (
-          <div key={cert.id} className="rounded-2xl border border-line bg-card/30 p-6">
-            <p className="font-mono text-[11px] uppercase tracking-wide text-muted/70">
+          <div key={cert.id} className="rounded-2xl bg-foreground p-6 shadow-xl shadow-black/25">
+            <p className="font-mono text-[11px] uppercase tracking-wide text-background/55">
               {cert.issuer}
             </p>
-            <p className="mt-2 font-display text-base font-semibold tracking-tight">{cert.title}</p>
-            <p className="mt-2 text-sm leading-relaxed text-muted">{cert.description}</p>
-            {cert.date ? <p className="mt-4 text-xs text-muted/70">{cert.date}</p> : null}
+            <p className="mt-2 font-display text-base font-semibold tracking-tight text-background">
+              {cert.title}
+            </p>
+            <p className="mt-2 text-sm leading-relaxed text-background/80">{cert.description}</p>
+            {cert.date ? <p className="mt-4 text-xs text-background/55">{cert.date}</p> : null}
           </div>
         ))}
       </StaggerGroup>

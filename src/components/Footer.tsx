@@ -50,7 +50,7 @@ export default function Footer() {
 
         <div className="mt-16 flex flex-col-reverse items-start justify-between gap-4 border-t border-line pt-6 text-xs text-muted md:flex-row md:items-center">
           <p>© {new Date().getFullYear()} {siteConfig.fullName}. All rights reserved.</p>
-          <p>{siteConfig.school.degree} {siteConfig.school.program}, {siteConfig.school.institution} — Class of {siteConfig.school.graduation}</p>
+          <p>{siteConfig.school.degree} {siteConfig.school.program}, {siteConfig.school.institution}, Class of {siteConfig.school.graduation}</p>
         </div>
       </div>
     </footer>

@@ -100,3 +100,49 @@ body[data-custom-cursor="on"] select {
 .animate-marquee {
   animation: marquee 30s linear infinite;
 }
+
+/* Ambient hero orbs — pure CSS, so they cost zero JS per frame (unlike a
+   Framer Motion `animate` loop, which recomputes on the main thread). Purely
+   a transform animation, so the browser can run it entirely on the
+   compositor thread. */
+@keyframes drift-a {
+  0%, 100% { transform: translate(0, 0); }
+  33% { transform: translate(30px, 20px); }
+  66% { transform: translate(-10px, -20px); }
+}
+@keyframes drift-b {
+  0%, 100% { transform: translate(0, 0); }
+  33% { transform: translate(-20px, -15px); }
+  66% { transform: translate(15px, 10px); }
+}
+.animate-drift-a {
+  animation: drift-a 22s ease-in-out infinite;
+}
+.animate-drift-b {
+  animation: drift-b 26s ease-in-out infinite;
+  animation-delay: 2s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-drift-a,
+  .animate-drift-b {
+    animation: none;
+  }
+}
+
+/* Gentle idle bob for the hero's 3D tilt card — pure transform, compositor
+   only, so it costs nothing while pointermove is also writing rotateX/Y to
+   the inner element independently. */
+@keyframes float-card {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+.animate-float-card {
+  animation: float-card 5s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-float-card {
+    animation: none;
+  }
+}

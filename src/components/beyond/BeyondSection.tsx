@@ -4,6 +4,7 @@ import StaggerGroup from "@/components/type/StaggerGroup";
 import { beyondTheBrief } from "@/lib/data";
 import MunFactsStrip from "./MunFactsStrip";
 import PhotoCluster from "./PhotoCluster";
+import BookStack from "./BookStack";
 import Shelf from "./Shelf";
 
 /** Gradient per block, drawn only from the site palette. */
@@ -33,15 +34,24 @@ const { title, subtitle, intro, items, munFacts, shelf } = beyondTheBrief;
  */
 export default function BeyondSection() {
   const blocks = items.map((item) => {
-    const photo = (
-      <PhotoCluster
-        label={item.photoLabel}
-        count={item.photoCount}
-        accent={ACCENTS[item.id]}
-        srcs={"photoSrcs" in item ? [...item.photoSrcs] : undefined}
-        className={item.id === "reading" ? "h-full" : undefined}
-      />
-    );
+    const photoSrcs = "photoSrcs" in item ? [...item.photoSrcs] : undefined;
+    const hasRealPhoto = Boolean(photoSrcs?.length);
+
+    // No real shelf photo yet — an original illustration stands in rather
+    // than a bare gradient placeholder, since this is the one slot with a
+    // natural, simple thing to actually draw.
+    const photo =
+      item.id === "reading" && !hasRealPhoto ? (
+        <BookStack className="h-full overflow-hidden rounded-2xl" />
+      ) : (
+        <PhotoCluster
+          label={item.photoLabel}
+          count={item.photoCount}
+          accent={ACCENTS[item.id]}
+          srcs={photoSrcs}
+          className={item.id === "reading" ? "h-full" : undefined}
+        />
+      );
 
     const copy = (
       <>

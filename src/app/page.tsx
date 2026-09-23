@@ -9,7 +9,9 @@ import Marquee from "@/components/Marquee";
 import PlaceholderMedia from "@/components/PlaceholderMedia";
 import NameIntro from "@/components/NameIntro";
 import Showreel from "@/components/Showreel";
-import CoverCarousel from "@/components/hero/CoverCarousel";
+import ScatterReveal from "@/components/ScatterReveal";
+import MagneticButton from "@/components/MagneticButton";
+import AmbientOrbs from "@/components/hero/AmbientOrbs";
 import TestimonialsSection from "@/components/testimonials/TestimonialsSection";
 import { siteConfig, caseStudies, skills } from "@/lib/data";
 
@@ -22,14 +24,7 @@ export default function Home() {
 
       {/* ── HERO ───────────────────────────────────────────── */}
       <section className="relative flex min-h-screen flex-col justify-center overflow-hidden px-6 pt-24">
-        {/* Rolodex of real case-study covers — background layer, right of the copy. */}
-        <CoverCarousel className="inset-y-0 right-[-2%] hidden w-[50vw] max-w-[640px] md:block lg:right-[3%] lg:w-[42vw]" />
-        {/* Readability scrim: keeps the headline crisp over the glow. */}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 z-[1] hidden bg-gradient-to-r from-background via-background/75 to-transparent md:block"
-        />
-
+        <AmbientOrbs />
         <div className="relative z-10 mx-auto w-full max-w-6xl">
           <motion.p
             initial={{ opacity: 0, y: 10 }}
@@ -70,19 +65,25 @@ export default function Home() {
             transition={{ duration: 0.7, delay: 0.75 }}
             className="mt-10 flex flex-wrap items-center gap-4"
           >
-            <Link
-              href="/work"
-              className="group inline-flex items-center gap-2 rounded-full bg-foreground px-6 py-3 text-sm font-medium text-background transition-colors hover:bg-accent"
-            >
-              View my work
-              <ArrowUpRight size={16} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </Link>
-            <Link
-              href="/about"
-              className="inline-flex items-center gap-2 rounded-full border border-foreground/15 px-6 py-3 text-sm font-medium transition-colors hover:border-accent hover:text-accent"
-            >
-              About me
-            </Link>
+            <MagneticButton>
+              <Link
+                href="/work"
+                data-cursor="link"
+                className="group inline-flex items-center gap-2 rounded-full bg-foreground px-6 py-3 text-sm font-medium text-background transition-colors hover:bg-accent"
+              >
+                View my work
+                <ArrowUpRight size={16} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </Link>
+            </MagneticButton>
+            <MagneticButton>
+              <Link
+                href="/about"
+                data-cursor="link"
+                className="inline-flex items-center gap-2 rounded-full border border-foreground/15 px-6 py-3 text-sm font-medium transition-colors hover:border-accent hover:text-accent"
+              >
+                About me
+              </Link>
+            </MagneticButton>
           </motion.div>
         </div>
 
@@ -131,11 +132,11 @@ export default function Home() {
             </Link>
           </Reveal>
 
-          <div className="mt-14 grid gap-x-8 gap-y-16 sm:grid-cols-2">
+          <ScatterReveal className="mt-14 grid gap-x-8 gap-y-16 sm:grid-cols-2">
             {caseStudies.slice(0, 4).map((project, i) => (
               <ProjectCard key={project.slug} project={project} index={i} />
             ))}
-          </div>
+          </ScatterReveal>
         </div>
       </section>
 

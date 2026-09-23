@@ -10,7 +10,7 @@ import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: `About — ${siteConfig.name}`,
+  title: `About · ${siteConfig.name}`,
   description: siteConfig.subTagline,
 };
 
@@ -70,7 +70,7 @@ export default function AboutPage() {
                 people actually use through research, systems thinking and brand strategy. I&apos;ve led
                 cross-functional coordination as Team Lead for the Government of Maharashtra&apos;s CSR
                 Summit, supported the Mahindra XUV300 launch as an Events &amp; Marketing intern, and run
-                brand strategy and market research at Adbhoot Creatives. I also love organising events —
+                brand strategy and market research at Adbhoot Creatives. I also love organising events;
                 I&apos;ve chaired and run Model UN conferences like MUNzil, coordinating 300+ delegates and
                 16 judges.
               </p>
@@ -123,7 +123,7 @@ export default function AboutPage() {
               {
                 n: "02",
                 title: "Design the backstage",
-                body: "A great customer experience that isn't operationally viable isn't a solution — it's a wish. I design frontstage and backstage together.",
+                body: "A great customer experience that isn't operationally viable isn't a solution, it's a wish. I design frontstage and backstage together.",
                 // Your own facilitation photo, running the workshop that builds the backstage.
                 bgImage: "/images/design-backstage.webp",
               },

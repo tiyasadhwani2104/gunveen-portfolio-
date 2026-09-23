@@ -90,7 +90,7 @@ export default function CommentCard({
       </div>
 
       <footer className="mt-6 flex flex-wrap items-center justify-between gap-x-6 gap-y-2 border-t border-background/15 pt-4">
-        <p className="text-sm text-background/70">— {author}</p>
+        <p className="text-sm text-background/70">{author}</p>
         <ProofLink label={proofLabel} url={proofUrl} onLight />
       </footer>
     </motion.article>
