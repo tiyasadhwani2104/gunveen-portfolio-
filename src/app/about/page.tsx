@@ -135,24 +135,19 @@ export default function AboutPage() {
                 bgImage: "/images/prototype-board.webp",
               },
             ].map((item) => (
-              <div key={item.n} className="relative overflow-hidden rounded-2xl border border-line p-8">
+              <div key={item.n} className="overflow-hidden rounded-2xl border border-line">
                 {item.bgImage ? (
-                  <>
-                    {/* Visible behind the text, tinted so the light text on
-                        top stays readable regardless of what's busy in the
-                        photo — heavier tint toward the bottom, where the body
-                        copy sits, lighter toward the top corner. */}
+                  <div className="relative aspect-[4/3] overflow-hidden">
                     <Image
                       src={item.bgImage}
                       alt=""
                       fill
                       sizes="(max-width: 640px) 100vw, 33vw"
-                      className="object-cover opacity-45"
+                      className="animate-slow-zoom object-cover"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/82 to-background/92" />
-                  </>
+                  </div>
                 ) : null}
-                <div className="relative">
+                <div className="p-8">
                   <span className="font-display text-3xl text-accent">{item.n}</span>
                   <h3 className="font-display mt-4 text-lg font-semibold">{item.title}</h3>
                   <p className="mt-2 text-sm text-muted leading-relaxed">{item.body}</p>

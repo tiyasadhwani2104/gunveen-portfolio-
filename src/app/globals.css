@@ -146,3 +146,19 @@ body[data-custom-cursor="on"] select {
     animation: none;
   }
 }
+
+/* Slow ambient "Ken Burns" drift for static photos in a card — pure
+   transform, compositor only, so it's cheap to leave running indefinitely. */
+@keyframes slow-zoom {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
+.animate-slow-zoom {
+  animation: slow-zoom 14s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-slow-zoom {
+    animation: none;
+  }
+}
