@@ -27,6 +27,8 @@ const driftItems: DriftWallItem[] = [
   ...beyondTheBrief.items.flatMap((item) =>
     "photoSrcs" in item ? item.photoSrcs.map((src) => ({ image: src, title: item.title })) : []
   ),
+  { image: "/images/gunveen-profile.webp", title: siteConfig.fullName },
+  { image: "/images/research-board.webp", title: "Research" },
 ].filter((item) => item.image);
 
 function MomentsWall() {
@@ -37,7 +39,7 @@ function MomentsWall() {
     // the screen, not a small padded grid — it needs to still read as an
     // "opening" moment, not a stray thumbnail block before the hero.
     return (
-      <div className="grid h-screen grid-cols-3 grid-rows-4 gap-0.5">
+      <div className="grid h-dvh grid-cols-3 grid-rows-4 gap-0.5">
         {driftItems.slice(0, 12).map((item, i) => (
           <div key={`${item.image}-${i}`} className="relative overflow-hidden">
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -50,7 +52,7 @@ function MomentsWall() {
   }
 
   return (
-    <div className="h-screen">
+    <div className="h-dvh">
       <DriftWall
         items={driftItems}
         columns={5}
